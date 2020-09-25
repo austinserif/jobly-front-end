@@ -11,3 +11,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+h1, h2, h3, h4, p {
+  text-decoration: none;
+  color: black;
+  padding: none;
+  margin: none;
+}
+
+.card:hover {
+  transform: translate(3px, -3px);
+  box-shadow: -3px 3px 8px 0px #888888;
+}
+
+.card:active {
+  transform: translate(3px, 3px);
+  box-shadow: -1px 1px 3px #888888;
+}

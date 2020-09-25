@@ -4,9 +4,11 @@ import React from 'react';
 //components
 import { Switch, Route } from 'react-router-dom';
 import Home from '../pages/Home';
+import Jobs from './Jobs';
 
 //styles
 import '../styles/Routes.css';
+import Companies from './Companies';
 
 
 const Routes = () => {
@@ -16,13 +18,13 @@ const Routes = () => {
                 <Home/>
             </Route>
             <Route exact path="/companies">
-                {/* <Companies/> */}
+                <Companies/>
             </Route>
             <Route exact path="/jobs">
-                {/* <Jobs/> */}
+                <Jobs/>
             </Route>
-            <Route path="/company/:handle">
-                {/* <Jobs/> */}
+            <Route path="/companies/:handle">
+                <Jobs/>
             </Route>            
             <Route exact path="/login">
                 {/* <Login/> */}

@@ -2,33 +2,52 @@ import axios from 'axios';
 
 class JoblyApi {
     static async request(endpoint, paramsOrData = {}, verb = "get") {
-        paramsOrData._token = ( // for now, hardcode token for "testing"
+        // for now, hardcode token for "testing"
+        paramsOrData._token = (
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc" +
         "3RpbmciLCJpc19hZG1pbiI6ZmFsc2UsImlhdCI6MTU1MzcwMzE1M30." +
-        "COmFETEsTxN_VfIlgIKw0bYJLkvbRQNgO1XCSE8NZ0U");
+        "COmFETEsTxN_VfIlgIKw0bYJLkvbRQNgO1XCSE8NZ0U"
+        );
 
         console.debug("API Call:", endpoint, paramsOrData, verb);
 
         try {
-        return (await axios({
-            method: verb,
-            url: `http://localhost:3001/${endpoint}`,
-            [verb === "get" ? "params" : "data"]: paramsOrData})).data;
-            // axios sends query string data via the "params" key,
-            // and request body data via the "data" key,
-            // so the key we need depends on the HTTP verb
-        }
 
-        catch(err) {
-        console.error("API Error:", err.response);
-        let message = err.response.data.message;
-        throw Array.isArray(message) ? message : [message];
+            const res = await axios({
+                method: verb,
+                url: `http://localhost:3001/${endpoint}`,
+                [verb === "get" ? "params" : "data"]: paramsOrData
+            });
+
+            return res.data;
+
+                // axios sends query string data via the "params" key,
+                // and request body data via the "data" key,
+                // so the key we need depends on the HTTP verb'
+
+        } catch(err) {
+            console.log('here here here! im an error!')
+            console.error("API Error:", err.response);
+            let message = err.response.data.message;
+            throw Array.isArray(message) ? message : [message];
         }
     }
 
+    /** Get all data about a specific company, including all available jobs. */
     static async getCompany(handle) {
-        let res = await this.request(`companies/${handle}`);
+        let res = await JoblyApi.request(`companies/${handle}`);
         return res.company;
+    }
+
+    /** Get all job listings in the database */
+    static async getJobs(search=null) {
+        let res = await JoblyApi.request(`jobs`, {search});
+        return res.jobs;
+    }
+
+    static async getCompanies(search=null) {
+        let res = await JoblyApi.request(`companies`, {search});
+        return res.companies;
     }
 }
 

@@ -10,10 +10,10 @@ import '../styles/Nav.css';
 const Nav = () => {
     return (
         <div className="Nav">
-            <Link id="home-link" className="Nav-link" to="/">Jobly</Link>
-            <Link className="Nav-link" to="/profile">Profile</Link>
-            <Link className="Nav-link" to="/companies">Companies</Link>
-            <Link className="Nav-link" to="/jobs">Jobs</Link>  
+            <Link id="home-link" className="Nav-link" to="/"><h4>Jobly</h4></Link>
+            <Link className="Nav-link" to="/profile"><h4>Profile</h4></Link>
+            <Link className="Nav-link" to="/companies"><h4>Companies</h4></Link>
+            <Link className="Nav-link" to="/jobs"><h4>Jobs</h4></Link>  
 
         </div>
     );

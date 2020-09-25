@@ -1,0 +1,31 @@
+.SearchBar {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 30px;
+}
+
+.SearchBar-field {
+    padding-left: 10px;
+    font-size: 20px;
+    border-radius: 4px;
+    border: 2px solid black;
+    width: 70%;
+    max-width: 1100px;
+    height: 40px;
+}
+
+.SearchBar-button {
+    font-size: 20px;
+    height: 46px;
+    border: 2px solid black;
+    border-radius: 4px;
+    margin: 10px;
+    cursor: pointer;
+    background-color: white;
+}
+
+.SearchBar-button:hover {
+    background-color: black;
+    color: white;
+}

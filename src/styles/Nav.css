@@ -1,12 +1,14 @@
 .Nav {
-    background-color: #333;
+    background-color: white;
+    border-bottom: 2px solid black;
     overflow: hidden;
+    
 }
 
 .Nav-link {
     float: right;
     display: block;
-    color: white;
+    color: black;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -19,6 +21,5 @@
 }
 
 .Nav-link:hover {
-    background-color: white;
-    color: #333;
+    text-decoration: underline;
 }

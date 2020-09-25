@@ -2,6 +2,14 @@
   text-align: center;
 }
 
+.card-item-left {
+  float: left;
+}
+
+.card-item-right {
+  float: right;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
