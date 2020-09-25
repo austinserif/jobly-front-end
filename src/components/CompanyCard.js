@@ -8,8 +8,9 @@ import { Link } from 'react-router-dom';
 import '../styles/CompanyCard.css'
 
 const CompanyCard = ({handle, name, num_employees, description, logo_url}) => {
+    console.log(handle)
     return (
-        <Link className="CompanyCard card" id={handle} to={`/${handle}`}>
+        <Link className="CompanyCard card" id={handle} to={`companies/${handle}`}>
             <div className="card-section">
                 <h2 className="CompanyCard-name card-item-left">{name}</h2>
             </div>

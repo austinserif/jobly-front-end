@@ -34,9 +34,14 @@ class JoblyApi {
     }
 
     /** Get all data about a specific company, including all available jobs. */
-    static async getCompany(handle) {
+    static async getCompany(handle, jobsOnly=true) {
         let res = await JoblyApi.request(`companies/${handle}`);
-        return res.company;
+
+        if (jobsOnly) {
+            return res.company.jobs;
+        } else {
+            return res.company;
+        }
     }
 
     /** Get all job listings in the database */

@@ -17,6 +17,7 @@
 
 .SearchBar-button {
     font-size: 20px;
+    font-weight: 600;
     height: 46px;
     border: 2px solid black;
     border-radius: 4px;

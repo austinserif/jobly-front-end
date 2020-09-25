@@ -35,7 +35,7 @@ const Companies = () => {
                 <SearchBar callback={setSearch}/>
             </div>
             <div className="CompaniesList">
-                {responseData.map(c => (<CompanyCard key={uuid()}handle={c.hanlde} name={c.name} num_employees={c.num_employees} description={c.description} logo_url={c.logo_url}/>))}
+                {responseData.map(c => (<CompanyCard key={uuid()} handle={c.handle} name={c.name} num_employees={c.num_employees} description={c.description} logo_url={c.logo_url}/>))}
             </div>
             
         </div>

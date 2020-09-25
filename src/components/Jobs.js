@@ -27,14 +27,10 @@ const Jobs = () => {
     //set callback and args. getJobs takes one optional parameter, handle
     const [ callback, args ] = (!handle ? [JoblyApi.getJobs, [search]] : [JoblyApi.getCompany, [handle]]);
 
+    console.log(callback);
+
     //call useLoading
     const [ responseData, isLoading ] = useLoading(search, callback, args);
-
-    useEffect(()=> {
-        const updateResults = () => {
-
-        }
-    }, [search])
 
     if (isLoading) {
         return (
