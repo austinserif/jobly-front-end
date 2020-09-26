@@ -7,15 +7,12 @@ import { Link } from 'react-router-dom';
 //styles
 import '../styles/CompanyCard.css'
 
-const CompanyCard = ({handle, name, num_employees, description, logo_url}) => {
-    console.log(handle)
+const CompanyCard = ({handle, name, num_employees, description}) => {
+    console.log(num_employees)
     return (
         <Link className="CompanyCard card" id={handle} to={`companies/${handle}`}>
-            <div className="card-section">
+            <div className="card-section bottom-border">
                 <h2 className="CompanyCard-name card-item-left">{name}</h2>
-            </div>
-            <div className="card-section">
-                <h4 className="CompanyCard-num-employees card-item-left"># of Employees: {num_employees}</h4>
             </div>
             <div className="card-section">
                 <p className="CompanyCard-description card-item-left">{description}</p>

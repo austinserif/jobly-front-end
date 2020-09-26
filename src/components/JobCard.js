@@ -3,11 +3,15 @@ import React from 'react';
 
 //styles
 import '../styles/JobCard.css'
+import useSubmitApplication from '../hooks/useSubmitApplication';
 
 const JobCard = ({id, title, salary, equity, state}) => {
+
+    const [ application, status, submitApplication ] = useSubmitApplication(state);
+
     return (
         <div className="JobCard card" id={id}>
-            <div className="card-section">
+            <div className="card-section bottom-border">
                 <h2 className="JobCard-title card-item-left">{title}</h2>
             </div>
             <div className="card-section">
@@ -17,7 +21,9 @@ const JobCard = ({id, title, salary, equity, state}) => {
                 <h4 className="JobCard-equity card-item-left">Equity: {100 * equity}%</h4>
             </div>
             <div className="card-section">
-                <button className="JobCard-application-button card-item-left" type="button">{(state ? `Applied` : `Apply`)}</button>
+                {
+                    application ? (<button className='JobCard-application-button card-item-left applied' disabled type="button">Applied</button>) : ((<button className='JobCard-application-button card-item-left' onClick={submitApplication} type="button">{status}</button>))
+                }
             </div>
         </div>
     );
