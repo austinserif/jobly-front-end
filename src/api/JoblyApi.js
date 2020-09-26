@@ -33,17 +33,17 @@ class JoblyApi {
         }
     }
 
-    /** Get all data about a specific company, including all available jobs. */
-    static async getCompany(handle, jobsOnly=true) {
+    /** Get all data about a specific company, including all available jobs. 
+     * method has one required parameter, handle (string), and one optional parameter jobsOnly (boolean). 
+     * By default jobsOnly is set to true, and so returns an array on job objects corresponding to the handle
+     * argument. If a false value is instead passed into the jobsOnly parameter, then getCompany will return the
+     * whole company object, which includes 
+    */
+    static async getCompany(handle) {
         let res = await JoblyApi.request(`companies/${handle}`);
-
-        if (jobsOnly) {
-            return res.company.jobs;
-        } else {
-            return res.company;
-        }
+        return res.company;
     }
-
+    
     /** Get all job listings in the database */
     static async getJobs(search=null) {
         let res = await JoblyApi.request(`jobs`, {search});
@@ -53,6 +53,11 @@ class JoblyApi {
     static async getCompanies(search=null) {
         let res = await JoblyApi.request(`companies`, {search});
         return res.companies;
+    }
+
+    static async login(username, password) {
+        let res = await JoblyApi.request(`login`, {username, password}, 'post');
+        return res.token;
     }
 }
 
