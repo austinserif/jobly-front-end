@@ -2,7 +2,10 @@
     background-color: white;
     border-bottom: 2px solid black;
     overflow: hidden;
-    
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 4;
 }
 
 .Nav-link {
@@ -10,7 +13,7 @@
     display: block;
     color: black;
     text-align: center;
-    padding: 14px 16px;
+    padding: 20px 16px 5px 16px;
     text-decoration: none;
     font-size: 17px;
 }
@@ -18,6 +21,7 @@
 /* home page link: float left */
 #home-link.Nav-link {
     float: left;
+    padding-top: 10px !important;
 }
 
 .Nav-link:hover {
