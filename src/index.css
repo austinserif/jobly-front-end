@@ -15,8 +15,8 @@ code {
 h1, h2, h3, h4, p {
   text-decoration: none;
   color: black;
-  padding: none;
-  margin: none;
+  padding: 0px;
+  margin: 10px;
 }
 
 .card:hover {
@@ -27,4 +27,8 @@ h1, h2, h3, h4, p {
 .card:active {
   transform: translate(3px, 3px);
   box-shadow: -1px 1px 3px #888888;
+}
+
+.Nav + .content {
+  padding-top: 100px;
 }

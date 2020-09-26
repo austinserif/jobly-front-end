@@ -1,5 +1,5 @@
 //libraries
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const useSearch = (initial="") => {
     const [ value, setValue ] = useState(initial);

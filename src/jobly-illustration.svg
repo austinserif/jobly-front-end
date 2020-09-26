@@ -1,0 +1,24 @@
+<svg width="304" height="224" viewBox="0 0 304 224" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="120" y="1" width="35" height="35" fill="#FF8063" stroke="black" stroke-width="2"/>
+    <rect x="219" y="100" width="34" height="35" fill="#FF8063" stroke="black" stroke-width="2"/>
+    <rect x="120.5" y="51.5" width="34" height="34" fill="#FF8063" stroke="black" stroke-width="3"/>
+    <rect x="120" y="51" width="35" height="35" fill="#FF8063" stroke="black" stroke-width="2"/>
+    <rect x="169" y="51" width="35" height="35" fill="#FF8063" stroke="black" stroke-width="2"/>
+    <rect x="120" y="100" width="35" height="35" fill="#FF8063" stroke="black" stroke-width="2"/>
+    <rect x="169" y="100" width="35" height="35" fill="#FF8063" stroke="black" stroke-width="2"/>
+    <rect x="219" y="149" width="34" height="35" fill="#FF8063" stroke="black" stroke-width="2"/>
+    <rect x="120" y="149" width="35" height="35" fill="#FF8063" stroke="black" stroke-width="2"/>
+    <rect x="169" y="149" width="35" height="35" fill="#FF8063" stroke="black" stroke-width="2"/>
+    <rect x="268" y="149" width="35" height="35" fill="#FF8063" stroke="black" stroke-width="2"/>
+    <line x1="156" y1="68" x2="169" y2="68" stroke="black" stroke-width="4"/>
+    <rect x="1" y="186" width="35" height="35" fill="#4E94D2" stroke="black" stroke-width="2"/>
+    <line x1="254" y1="166" x2="268" y2="166" stroke="black" stroke-width="4"/>
+    <line x1="205" y1="166" x2="218" y2="166" stroke="black" stroke-width="4"/>
+    <line x1="155" y1="166" x2="168" y2="166" stroke="black" stroke-width="4"/>
+    <path d="M36.1136 203.743C36.1136 203.743 66.8268 215.75 77.8482 203.743C87.9655 192.721 69.0064 174.188 77.8472 165.432C86.688 156.677 120.086 165.433 120.086 165.433" stroke="black" stroke-width="4"/>
+    <line x1="205" y1="117" x2="219" y2="117" stroke="black" stroke-width="4"/>
+    <line x1="155" y1="117" x2="168" y2="117" stroke="black" stroke-width="4"/>
+    <line x1="137" y1="87" x2="137" y2="100" stroke="black" stroke-width="4"/>
+    <line x1="137" y1="37" x2="137" y2="50" stroke="black" stroke-width="4"/>
+    <line x1="137" y1="136" x2="137" y2="149" stroke="black" stroke-width="4"/>
+</svg>

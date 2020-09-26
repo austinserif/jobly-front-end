@@ -2,13 +2,13 @@
 import React, { useState } from 'react';
 import JoblyApi from '../api/JoblyApi';
 import useLoading from '../hooks/useLoading';
-import { useParams } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
-import SearchBar from './SearchBar';
-import CompanyCard from './CompanyCard';
+import SearchBar from '../components/SearchBar';
+import CompanyCard from '../components/CompanyCard';
 
 //styles
 import '../styles/Companies.css';
+import LoadingIcon from '../components/LoadingIcon';
 
 
 const Companies = () => {
@@ -17,14 +17,14 @@ const Companies = () => {
 
     const [ callback, args ] = [JoblyApi.getCompanies, [search]];
     
-    const [ responseData, isLoading ] = useLoading(search, callback, args);
+    const [ responseData, isLoading ] = useLoading(callback, args, search);
 
     if (isLoading) {
         return (
             <div>
-                Your companies are loading!
+                <LoadingIcon/>
             </div>
-        )
+        );
     }
 
     console.log(responseData);

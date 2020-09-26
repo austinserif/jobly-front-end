@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react';
  * isLoading will be set to false.
  * 
  */
-const useLoading = (search, callback, args=[]) => {
+const useLoading = (callback, args=[], search=null) => {
     const [ isLoading, setIsLoading ] = useState(true);
     const [ responseData, setResponseData ] = useState({});
 
@@ -21,7 +21,10 @@ const useLoading = (search, callback, args=[]) => {
                 const response = await callback(...args);
                 setResponseData(response);
             }
-            setIsLoading(false);
+            setInterval(()=> {
+                setIsLoading(false);
+            }, 1000);
+            
         }
         getResponseData(callback, args); 
     }, [search]);
