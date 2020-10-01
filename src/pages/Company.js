@@ -33,6 +33,8 @@ const Company = () => {
     //call useLoading
     const [ responseData, isLoading ] = useLoading(callback, args);
 
+    const { name, description, jobs} = responseData;
+
     if (isLoading) {
         return (
             <div>
@@ -41,7 +43,6 @@ const Company = () => {
         );
     }
 
-    const { name, description, jobs} = responseData;
     return (
         <div className="Company">
 

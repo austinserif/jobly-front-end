@@ -4,7 +4,7 @@ import '../styles/SearchBar.css';
 
 const SearchBar = ({callback}) => {
 
-    const [value, handleChange, resetInput] = useSearch();
+    const [value, handleChange] = useSearch();
 
     const handleSubmit = (e) => {
         e.preventDefault();

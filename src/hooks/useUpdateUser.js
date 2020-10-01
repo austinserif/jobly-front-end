@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom';
  * passed into useLoading has resolved its promise, responseData will be set to the returned value, and finally
  * isLoading will be set to false.
  */
-const useLoading = (callback, args=[], search=null, loading=true, fields={}) => {
+const useUpdateUser = (callback, args=[]) => {
     const [ isLoading, setIsLoading ] = useState(loading);
     const [ responseData, setResponseData ] = useState(fields);
     const history = useHistory();
@@ -40,14 +40,15 @@ const useLoading = (callback, args=[], search=null, loading=true, fields={}) => 
                 setIsLoading(false);
 
             } catch (err) {
-                history.push('/login')
+                history.push('/profile')
             }
         }
         getResponseData(callback, args); 
         
         // eslint-disable-next-line
     }, [search]);
+    
     return [ responseData, isLoading ];
 }
 
-export default useLoading;
+export default useUpdateUser;

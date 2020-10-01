@@ -6,15 +6,20 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 import Home from '../pages/Home';
 import Jobs from '../pages/Jobs';
 import Company from '../pages/Company';
+import Login from '../pages/Login';
 
 //styles
 import '../styles/Routes.css';
 import Companies from '../pages/Companies';
+import Profile from '../pages/Profile';
+import Registration from '../pages/Registration';
 
 
-const Routes = () => {
+
+const Routes = ({userToken, isLoading, userData}) => {
     return (
         <Switch className="Routes">
+
             <Route exact path="/">
                 <Home/>
             </Route>
@@ -30,11 +35,17 @@ const Routes = () => {
             </Route>
                         
             <Route exact path="/login">
-                {/* <Login/> */}
+                <Login userToken={userToken}/>
             </Route>
+
+            <Route exact path="/register">
+                <Registration/>
+            </Route>
+            
             <Route exact path="/profile">
-                {/* <Profile/> */}
+                <Profile userData={userData} isLoading={isLoading}/>
             </Route>
+
             <Route>
                 <div>
                     Whoops! The page you requested wasn't found!

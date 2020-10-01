@@ -1,0 +1,17 @@
+.Form {
+    display: inline-block;
+    padding: 0px;
+    width: 90%;
+    max-width: 500px;
+    border: 2px black solid;
+    border-radius: 8px;
+}
+
+.Form-err {
+    color: red;
+    font-weight: 500;
+}
+
+.Form-errors {
+    display: inline-block;
+}

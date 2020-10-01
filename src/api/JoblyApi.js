@@ -1,18 +1,18 @@
 import axios from 'axios';
+import jwt from 'jsonwebtoken';
+import SECRET from '../config';
 
 class JoblyApi {
     static async request(endpoint, paramsOrData = {}, verb = "get") {
-        // for now, hardcode token for "testing"
+
+        //get jwt from localStorage if available
         paramsOrData._token = (
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc" +
-        "3RpbmciLCJpc19hZG1pbiI6ZmFsc2UsImlhdCI6MTU1MzcwMzE1M30." +
-        "COmFETEsTxN_VfIlgIKw0bYJLkvbRQNgO1XCSE8NZ0U"
+            localStorage.getItem('userToken')
         );
 
         console.debug("API Call:", endpoint, paramsOrData, verb);
 
         try {
-
             const res = await axios({
                 method: verb,
                 url: `http://localhost:3001/${endpoint}`,
@@ -26,7 +26,6 @@ class JoblyApi {
                 // so the key we need depends on the HTTP verb'
 
         } catch(err) {
-            console.log('here here here! im an error!')
             console.error("API Error:", err.response);
             let message = err.response.data.message;
             throw Array.isArray(message) ? message : [message];
@@ -58,6 +57,77 @@ class JoblyApi {
     static async login(username, password) {
         let res = await JoblyApi.request(`login`, {username, password}, 'post');
         return res.token;
+    }
+    
+    /** takes an variable length array of length-two arrays, each two-length array representing a completed registration field,
+     * and containing [key, value], respectively.  */
+    static async register(completedFields) {
+        const fieldsObj = {};
+        for (let field of completedFields) {
+            fieldsObj[field[0]] = field[1];
+        }
+        let res = await JoblyApi.request(`users`, {...fieldsObj}, 'post');
+        return res.token;
+    }
+
+    /** returns data related to currentUser*/
+    static async getCurrentUser() {
+        //get currentUser from localStorage
+        const token = localStorage.getItem('userToken');
+
+        //verify token
+        let user = jwt.verify(token, SECRET);
+
+        //extract username from user
+        const { username } = user;
+
+        //get data about that user
+        let res = await JoblyApi.request(`users/${username}`);
+        console.log(res.user);
+        return res.user;
+    }
+
+    /** returns data related to currentUser*/
+    static async getCurrentUserData() {
+        //get currentUser from localStorage
+        const token = localStorage.getItem('userToken');
+
+        //verify token
+        let user = jwt.verify(token, SECRET);
+
+        //extract username from user
+        const { username } = user;
+
+        //get data about that user
+        let res = await JoblyApi.request(`users/${username}`);
+        console.log(res.user);
+        return res.user;
+    }
+
+    /** Takes a user object and username string and updates the user info associated
+     * with the passed username to match the new user Object
+     * 
+     * params: fields (Object), username (string)*/
+    static async updateUserInfo(fields, username) {
+        console.log(username)
+        let res = await JoblyApi.request(`users/${username}`, fields, 'patch');
+        return res.user;
+    }
+
+    /** Takes a user object and username string and updates the user info associated
+     * with the passed username to match the new user Object
+     * 
+     * params: fields (Object), username (string)*/
+    static async updateUserData(fields, username) {
+        //block jobs and username field from being submitted
+        delete fields.jobs;
+        delete fields.username;
+
+        //send updated user data to server in patch request
+        let res = await JoblyApi.request(`users/${username}`, fields, 'patch');
+
+        //return updated user object
+        return res.user;
     }
 }
 

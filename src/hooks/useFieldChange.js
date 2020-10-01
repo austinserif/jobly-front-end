@@ -15,7 +15,7 @@ const useFieldChange = (initial) => {
         setValues(initial);
     }
 
-    return [ values, handleChange, resetValues];
+    return [ values, handleChange, resetValues ];
 }
 
 export default useFieldChange;

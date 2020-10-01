@@ -1,0 +1,55 @@
+.Field {
+    width: 100%;
+    margin: 20px 0px 20px 0px;
+
+}
+
+.Field-field {
+    margin: 10px;
+    padding-left: 10px;
+    font-size: 20px;
+    border-radius: 4px;
+    border: 2px solid black;
+    width: 90% !important;
+    max-width: 700px;
+    height: 46px;
+}
+
+.Field-button {
+    margin: 5px;
+    padding: 0px;
+    font-size: 15px;
+    border-radius: 4px;
+    border: 2px solid black;
+    width: 90%;
+    height: 40px;
+    font-size: 20px;
+    font-weight: 600;
+    height: 46px;
+    cursor: pointer;
+    background-color: white;
+}
+
+.Field-button:hover {
+    background-color: black;
+    color: white;
+}
+
+.Field-field.completed {
+    border: 2px solid rgb(0, 193, 0);
+}
+
+.Field-field:focus {
+    outline: black;
+}
+
+.required {
+    border: 2px dotted maroon;
+}
+
+input {
+    width: 100%;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
+  }
