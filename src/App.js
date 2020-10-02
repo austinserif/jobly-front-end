@@ -17,7 +17,7 @@ import Banner from './components/Banner';
  * */
 function App() {
 
-  const [ banner, setBanner ] = useState(null);
+  const [ banner, setBanner ] = useState('Welcome to Jobly! To browse and apply for jobs at hundreds of companies!');
 
   const [ userToken, userData, isLoading, toggleIsLoading, handleLogout, handleEditProfile, handleLogin ] = useCurrentUser();
 

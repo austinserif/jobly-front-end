@@ -83,7 +83,6 @@ class JoblyApi {
 
         //get data about that user
         let res = await JoblyApi.request(`users/${username}`);
-        console.log(res.user);
         return res.user;
     }
 
