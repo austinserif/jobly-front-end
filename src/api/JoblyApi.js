@@ -15,7 +15,7 @@ class JoblyApi {
         try {
             const res = await axios({
                 method: verb,
-                url: `http://localhost:3001/${endpoint}`,
+                url: `https://jobly-sans-serif.herokuapp.com/${endpoint}`,
                 [verb === "get" ? "params" : "data"]: paramsOrData
             });
 
