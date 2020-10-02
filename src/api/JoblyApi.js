@@ -71,23 +71,6 @@ class JoblyApi {
     }
 
     /** returns data related to currentUser*/
-    static async getCurrentUser() {
-        //get currentUser from localStorage
-        const token = localStorage.getItem('userToken');
-
-        //verify token
-        let user = jwt.verify(token, SECRET);
-
-        //extract username from user
-        const { username } = user;
-
-        //get data about that user
-        let res = await JoblyApi.request(`users/${username}`);
-        console.log(res.user);
-        return res.user;
-    }
-
-    /** returns data related to currentUser*/
     static async getCurrentUserData() {
         //get currentUser from localStorage
         const token = localStorage.getItem('userToken');
@@ -128,6 +111,11 @@ class JoblyApi {
 
         //return updated user object
         return res.user;
+    }
+
+    static async applyForJob(jobId) {
+        let res = await JoblyApi.request(`jobs/${jobId}/apply`, {}, 'post');
+        return res;
     }
 }
 

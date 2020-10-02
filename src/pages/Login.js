@@ -18,9 +18,7 @@ const Login = ({ userToken }) => {
 
     const history = useHistory();
 
-    if ( userToken ) {
-        history.push('/');
-    }
+
 
     const [ values, handleChange, resetValues ] = useInputChange(initial);
 
@@ -30,9 +28,9 @@ const Login = ({ userToken }) => {
         e.preventDefault();
         try {
             const { username, password } = values;
-            await handleLogin(username, password);
-            resetValues();            
+            await handleLogin(username, password);            
         } catch (err) {
+            resetValues();
             console.error(err);
             setErrors(err);
         }
@@ -40,6 +38,10 @@ const Login = ({ userToken }) => {
 
     const redirectToSignUp = () => {
         history.push('/register')
+    }
+    
+    if ( userToken ) {
+        history.push('/');
     }
 
     return (

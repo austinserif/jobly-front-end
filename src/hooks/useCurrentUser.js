@@ -13,12 +13,15 @@ const useCurrentUser = () => {
 
     useEffect(() => {
         const initialLoad = async () => {
-            const response = await JoblyApi.getCurrentUser();
+            const response = await JoblyApi.getCurrentUserData();
             setUserData(response);
             setIsLoading(false);
         }
-        initialLoad();
-    }, [])
+
+        if (userToken) {
+            initialLoad();
+        }      
+    }, []);
 
     const toggleIsLoading = () => (setIsLoading(!isLoading));
 

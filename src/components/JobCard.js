@@ -7,7 +7,7 @@ import useSubmitApplication from '../hooks/useSubmitApplication';
 
 const JobCard = ({id, title, salary, equity, state}) => {
 
-    const [ application, status, submitApplication ] = useSubmitApplication(state);
+    const [ application, status, submitApplication ] = useSubmitApplication(state, id);
 
     return (
         <div className="JobCard card" id={id}>

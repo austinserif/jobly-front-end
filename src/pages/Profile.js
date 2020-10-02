@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import useInputChange from '../hooks/useInputChange';
 import '../styles/Form.css';
@@ -12,7 +12,7 @@ const Profile = ({ userData, isLoading }) => {
     const history = useHistory();
 
     // load the currentUser and callback for updating the user token from context token from context
-    const { handleEditProfile, toggleIsLoading } = useContext(CurrentUserContext);
+    const { handleEditProfile, setBanner } = useContext(CurrentUserContext);
 
     // load response data into the current values
     const [ values, handleChange ] = useInputChange({...userData, password: ''});
@@ -20,7 +20,7 @@ const Profile = ({ userData, isLoading }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         handleEditProfile(values, userData.username)
-        alert('Your Profile Has Been Successfully Updated!')
+        setBanner('Your Profile Has Been Successfully Updated!');
         history.push('/');
     }
 

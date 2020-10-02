@@ -1,13 +1,15 @@
 import { useState } from 'react';
+import JoblyApi from '../api/JoblyApi';
 
-const useSubmitApplication = (initial) => {
+const useSubmitApplication = (initial, jobId) => {
 
     const [state, setState] = useState(initial);
     const [status, setStatus] = useState('Apply');
 
-    const submitApplication = () => {
-        setStatus('Submitting...');        
-        console.log('submitting application!');
+    const submitApplication = async () => {
+        setStatus('Submitting...');
+        const response = await JoblyApi.applyForJob(jobId);
+        console.log(response);
         setTimeout(() => {
             setState(true);
         }, 3000);
