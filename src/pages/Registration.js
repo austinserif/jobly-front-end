@@ -5,7 +5,6 @@ import {v4 as uuid} from 'uuid';
 import '../styles/Form.css';
 import '../styles/Field.css';
 import useLoadRegistration from '../hooks/useLoadRegistration';
-import useFormCompletion from '../hooks/useFormCompletion';
 import CurrentUserContext from '../CurrentUserContext';
 import Field from '../components/Field';
 
@@ -40,7 +39,7 @@ const Registration = () => {
             updateCurrentUser(resData);
             history.push('/');
         };
-    }, [resData, history]);
+    }, [resData, history, updateCurrentUser]);
 
     const handleSubmit = (e) => {
         e.preventDefault();

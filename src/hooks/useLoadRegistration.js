@@ -9,11 +9,7 @@ const useLoadRegistration = () => {
 
     const handleRegistration = async (fields) => {
         try {
-            const completedFields = Object.entries(fields).map(f => {
-                if (f[0].length) {
-                    return f;
-                }
-            });
+            const completedFields = Object.entries(fields).map(f => (f[0].length ? f : null));
 
             const res = await JoblyApi.register(completedFields);
             setResponseData(res);

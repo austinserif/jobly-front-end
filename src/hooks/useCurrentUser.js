@@ -20,7 +20,8 @@ const useCurrentUser = () => {
 
         if (userToken) {
             initialLoad();
-        }      
+        }
+    // eslint-disable-next-line
     }, []);
 
     const toggleIsLoading = () => (setIsLoading(!isLoading));

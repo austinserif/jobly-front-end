@@ -18,8 +18,6 @@ const Login = ({ userToken }) => {
 
     const history = useHistory();
 
-
-
     const [ values, handleChange, resetValues ] = useInputChange(initial);
 
     const [ errs, setErrors ] = useState(null);
