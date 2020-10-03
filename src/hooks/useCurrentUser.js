@@ -79,7 +79,7 @@ const useCurrentUser = () => {
         }
     }
 
-    return [ userToken, userData, isLoading, toggleIsLoading, handleLogout, handleEditProfile, handleLogin ]
+    return [ userToken, userData, isLoading, toggleIsLoading, handleLogout, handleEditProfile, handleLogin, setUserData ]
 }
 
 export default useCurrentUser;

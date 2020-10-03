@@ -32,3 +32,9 @@ h1, h2, h3, h4, p {
 .Nav + .content {
   padding-top: 100px;
 }
+
+@media screen and (max-width: 480px) {
+  .Nav + .content {
+    padding-top: 150px;
+  }
+}

@@ -1,5 +1,5 @@
 //libraries
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import CurrentUserContext from './CurrentUserContext';
 
 //components
@@ -11,6 +11,7 @@ import Nav from './components/Nav';
 import './App.css';
 import useCurrentUser from './hooks/useCurrentUser';
 import Banner from './components/Banner';
+import JoblyApi from './api/JoblyApi';
 
 /** 
  * Top-level App component, renders <Nav/> and <Routes/> components.
@@ -19,8 +20,27 @@ function App() {
 
   const [ banner, setBanner ] = useState(null);
 
-  const [ userToken, userData, isLoading, toggleIsLoading, handleLogout, handleEditProfile, handleLogin ] = useCurrentUser();
+  const [ userToken, userData, isLoading, toggleIsLoading, handleLogout, handleEditProfile, handleLogin, setUserData ] = useCurrentUser();
 
+  useEffect(() => { 
+    if (userToken && !userData && !isLoading) {
+      const forceLoadUserData = async () => {
+
+        toggleIsLoading();
+
+        try {
+          const response = await JoblyApi.getCurrentUserData();
+          setUserData(response);
+        } catch (err) {
+          console.log(err);
+        }
+
+        toggleIsLoading();
+
+      }
+      forceLoadUserData();
+    }
+  }, [userToken, userData, isLoading, setUserData, toggleIsLoading]);
   return (
     <div className="App">
       <BrowserRouter>
