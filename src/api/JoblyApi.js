@@ -66,8 +66,10 @@ class JoblyApi {
         for (let field of completedFields) {
             fieldsObj[field[0]] = field[1];
         }
+
         let res = await JoblyApi.request(`users`, {...fieldsObj}, 'post');
         return res.token;
+
     }
 
     /** returns data related to currentUser*/
