@@ -20,11 +20,11 @@ const Registration = () => {
     }
 
     //does this line make sense?
-    const { currentUser, updateCurrentUser } = useContext(CurrentUserContext);
+    const { userToken } = useContext(CurrentUserContext);
 
     const history = useHistory();
 
-    if ( currentUser ) {
+    if ( userToken ) {
         history.push('/');
     }
 
@@ -36,10 +36,9 @@ const Registration = () => {
 
     useEffect(() => {
         if (resData) {
-            updateCurrentUser(resData);
             history.push('/');
         };
-    }, [resData, history, updateCurrentUser]);
+    }, [resData, history]);
 
     const handleSubmit = (e) => {
         e.preventDefault();

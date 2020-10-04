@@ -16,12 +16,12 @@ import Registration from '../pages/Registration';
 
 
 
-const Routes = ({userToken, isLoading, userData}) => {
+const Routes = ({userToken, isLoading, userData, setUserData, toggleIsLoading}) => {
     return (
         <Switch className="Routes">
 
             <Route exact path="/">
-                <Home/>
+                <Home  userToken={userToken} userData={userData} isLoading={isLoading} setUserData={setUserData} toggleIsLoading={toggleIsLoading} />
             </Route>
 
             <Route exact path="/companies">

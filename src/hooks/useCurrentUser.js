@@ -37,6 +37,24 @@ const useCurrentUser = () => {
         setUserData(() => ({}));
     }
 
+    /** handles basic operation of retrieving currentUserData from server
+     * and updates the userData variable in state
+     */
+    const handleLoadUserData = async () => {
+        //set loading to true
+        setIsLoading(true);
+
+        // message api for current user data
+        const response = await JoblyApi.getCurrentUserData();
+
+        //set response into state
+        setUserData(response);
+
+        //set loading back to false once complete
+        setIsLoading(false);
+
+    }
+
     /** handle login sequence */
     const handleLogin = async (username, password) => {
         try {
@@ -50,6 +68,9 @@ const useCurrentUser = () => {
             // 1. passing localStorage.userToken instead of userToken ensures that local storage remains the single source of truth
             // 2. updating the value of userToken will trigger re-renders on dependent components */
             setUserToken(() => (localStorage.userToken));
+
+            await handleLoadUserData();
+
         } catch (err) {
             console.error(err);
         }
