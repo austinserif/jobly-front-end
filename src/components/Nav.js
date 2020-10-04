@@ -34,20 +34,20 @@ const Nav = ({userToken, handleLogout}) => {
     if (userToken) {
         return (
             <div className="Nav">
-                <Link id="home-link" className="Nav-link" to="/" onClick={() => (toggleButton())}><img alt="" src={JoblyLogo} width='50px'/></Link>
+                <Link id="home-link" className="Nav-link" to="/" onClick={(isActive ? (() => toggleButton()) : null)}><img alt="" src={JoblyLogo} width='50px'/></Link>
                 <div className="Nav-drop-down" ref={dropDownBox}>
                     <div>
                         <HamburgerBoring id="hamburger-menu" className="Nav-link" buttonWidth={30} isActive={isActive} toggleButton={toggleButton}/>
                     </div>
                     <div className="menu hidden" ref={dropDown}>
                         <div>
-                            <Link className="Nav-link" to="/companies" onClick={() => (toggleButton())}><h4>Companies</h4></Link>                    
+                            <Link className="Nav-link" to="/companies" onClick={(isActive ? (() => toggleButton()) : null)}><h4>Companies</h4></Link>                    
                         </div>                        
                         <div>
-                            <Link className="Nav-link" to="/jobs" onClick={() => (toggleButton())}><h4>Jobs</h4></Link>                    
+                            <Link className="Nav-link" to="/jobs" onClick={(isActive ? (() => toggleButton()) : null)}><h4>Jobs</h4></Link>                    
                         </div>
                         <div>
-                            <Link className="Nav-link" to="/profile" onClick={() => (toggleButton())}><h4>Profile</h4></Link>                    
+                            <Link className="Nav-link" to="/profile" onClick={(isActive ? (() => toggleButton()) : null)}><h4>Profile</h4></Link>                    
                         </div>
                         <div>
                             <Link className="Nav-link" onClick={handleLogout} to="/"><h4>Logout</h4></Link>                    
