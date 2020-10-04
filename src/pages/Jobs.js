@@ -22,17 +22,19 @@ import LoadingIcon from '../components/LoadingIcon';
  * default, and thus the component is signaled to render a list of ALL the jobs. In order to signal that
  * the component should render just the jobs for a single company, then all=false should be passed in. Otherwise
  * the Component won't know to get the URL param handle, and pass it into AJAX/API hook.
- * */
+ */
 const Jobs = () => {
 
+    //declare search variable in state
     const [search, setSearch] = useState('');
 
     //set callback and args. getJobs takes one optional parameter, handle
     const [ callback, args ] = [JoblyApi.getJobs, [search]];
 
-    //call useLoading
+    //call useLoading, set
     const [ responseData, isLoading ] = useLoading(callback, args, search);
 
+    //render loading icon is data hasn't loaded yet
     if (isLoading) {
         return (
             <div>
@@ -49,7 +51,6 @@ const Jobs = () => {
             <div className="JobsList">
                 {responseData.map(d => (<JobCard id={d.id} key={uuid()} title={d.title} company_handle={d.company_handle} salary={d.salary} equity={d.equity} state={d.state}/>))}
             </div>
-            
         </div>
     );
 }

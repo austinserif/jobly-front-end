@@ -90,16 +90,6 @@ class JoblyApi {
      * with the passed username to match the new user Object
      * 
      * params: fields (Object), username (string)*/
-    static async updateUserInfo(fields, username) {
-        console.log(username)
-        let res = await JoblyApi.request(`users/${username}`, fields, 'patch');
-        return res.user;
-    }
-
-    /** Takes a user object and username string and updates the user info associated
-     * with the passed username to match the new user Object
-     * 
-     * params: fields (Object), username (string)*/
     static async updateUserData(fields, username) {
         //block jobs and username field from being submitted
         delete fields.jobs;
