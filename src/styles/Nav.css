@@ -9,10 +9,12 @@
 }
 
 .Nav-link {
+    padding-top: 15px;
+    padding-right: 10px;
     float: right;
     display: block;
     color: black;
-    text-align: center;
+    text-align: right;
     text-decoration: none;
     font-size: 17px;
 }
@@ -21,6 +23,7 @@
 #home-link.Nav-link {
     float: left;
     padding-top: 10px !important;
+    padding-left: 10px;
 }
 
 .Nav-link:hover {
@@ -66,6 +69,7 @@ button:focus {
 
 .Nav-drop-down {
     float: right;
+    padding: 10px;
 }
 
 .Nav-drop-down.isActive {
@@ -74,26 +78,29 @@ button:focus {
 
 @keyframes growDown {
     0% {
-      transform: scaleY(0)
+      transform: scaleY(.2)
     }
     100% {
       transform: scaleY(1)
     }
 }
 
+#hamburger-menu {
+    padding-top: 20px !important;
+}
+
 .menu {
-    margin-top: 15px;
+    padding-right: 10px;
 }
 
 .menu.active {
     /* animation: growDown 400ms ease-in-out forwards; */
-    animation: growDown 300ms ease-in-out forwards;
+    /* animation: growDown 100ms forwards; */
     transform-origin: center;
-    margin: 35px !important;
 }
 
 .menu.hidden {
-    animation: growDown 300ms ease-in-out backwards;
+    /* animation: growDown 100ms ease-in-out backwards; */
     display: none;
 }
 
@@ -105,4 +112,5 @@ button:focus {
 
 .sticky + .content {
     padding-top: 60px;
-  }
+}
+

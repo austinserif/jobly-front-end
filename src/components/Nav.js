@@ -1,14 +1,15 @@
 //libraries
 import React, { useRef, useEffect } from 'react';
+import useToggle from '../hooks/useToggle';
 
 //components
 import { Link } from 'react-router-dom';
 import JoblyLogo from '../jobly-logo.svg';
-import { HamburgerCollapseReverse } from 'react-animated-burgers';
+import { HamburgerBoring } from 'react-animated-burgers';
 
 //styles 
 import '../styles/Nav.css';
-import useToggle from '../hooks/useToggle';
+
 
 const Nav = ({userToken, handleLogout}) => {
 
@@ -19,10 +20,13 @@ const Nav = ({userToken, handleLogout}) => {
     const dropDown = useRef();
     const dropDownBox = useRef();
 
-    useEffect(()=> {
+    useEffect(() => {
         const toggleSideMenu = () => {
-            (dropDown.current.className === 'menu active') ? (dropDown.current.className = 'menu hidden') : (dropDown.current.className = 'menu active');
-            console.log(dropDown.current.className);
+            if (dropDown.current) {
+                (dropDown.current.className === 'menu active') ? (dropDown.current.className = 'menu hidden') : (dropDown.current.className = 'menu active');
+            } else {
+                console.log(dropDown);
+            }
         }
         toggleSideMenu();
     }, [isActive]);
@@ -33,7 +37,7 @@ const Nav = ({userToken, handleLogout}) => {
                 <Link id="home-link" className="Nav-link" to="/"><img alt="" src={JoblyLogo} width='50px'/></Link>
                 <div className="Nav-drop-down" ref={dropDownBox}>
                     <div>
-                        <HamburgerCollapseReverse id="hamburger-menu" className="Nav-link" buttonWidth={30} isActive={isActive} toggleButton={toggleButton}/>
+                        <HamburgerBoring id="hamburger-menu" className="Nav-link" buttonWidth={30} isActive={isActive} toggleButton={toggleButton}/>
                     </div>
                     <div className="menu active" ref={dropDown}>
                         <div>

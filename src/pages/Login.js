@@ -1,5 +1,5 @@
 //libraries
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import useInputChange from '../hooks/useInputChange';
 import {v4 as uuid} from 'uuid';
@@ -55,11 +55,17 @@ const Login = ({ userToken }) => {
     const redirectToSignUp = () => {
         history.push('/register')
     }
+
+    useEffect(() => {
+        if (userToken) {
+            history.push('/');
+        }
+    }, [userToken, history]);
     
     //redirect to root route if userToken present
-    if ( userToken ) {
-        history.push('/');
-    }
+    // if ( userToken ) {
+    //     history.push('/');
+    // }
 
     return (
         <form className="Form" onSubmit={handleSubmit}>

@@ -1,3 +1,8 @@
+.Jobs {
+    display: inline;
+    overflow: hidden;
+}
+
 .JobsList {
     display: flex;
     flex-wrap: wrap;
