@@ -9,13 +9,15 @@ import JoblyApi from '../api/JoblyApi';
 const Home = ({ userToken, userData, isLoading, setUserData, toggleIsLoading }) => {
 
     useEffect(() => { 
+        
         const forceLoadUserData = async () => {
             toggleIsLoading();
             const response = await JoblyApi.getCurrentUserData();
             setUserData(response);
             toggleIsLoading();
             return;
-        }        
+        }
+
         if (userToken && !userData && !isLoading) {
             forceLoadUserData();
         }

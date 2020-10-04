@@ -1,5 +1,5 @@
 //libraries
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import useToggle from '../hooks/useToggle';
 
 //components
@@ -14,22 +14,11 @@ import '../styles/Nav.css';
 const Nav = ({userToken, handleLogout}) => {
 
     //set isActive vairable into state to keep track of side nav status
-    const [ isActive, toggleButton ] = useToggle();
+    const [ isActive, toggleButton ] = useToggle(false);
 
     //register dropDown and dropDownBox elements into reference using 
     const dropDown = useRef();
     const dropDownBox = useRef();
-
-    useEffect(() => {
-        const toggleSideMenu = () => {
-            if (dropDown.current) {
-                (dropDown.current.className === 'menu active') ? (dropDown.current.className = 'menu hidden') : (dropDown.current.className = 'menu active');
-            } else {
-                console.log(dropDown);
-            }
-        }
-        toggleSideMenu();
-    }, [isActive]);
 
     if (userToken) {
         return (
@@ -39,7 +28,7 @@ const Nav = ({userToken, handleLogout}) => {
                     <div>
                         <HamburgerBoring id="hamburger-menu" className="Nav-link" buttonWidth={30} isActive={isActive} toggleButton={toggleButton}/>
                     </div>
-                    <div className="menu hidden" ref={dropDown}>
+                    <div className={isActive ? "menu active" : "menu hidden"}ref={dropDown}>
                         <div>
                             <Link className="Nav-link" to="/companies" onClick={(isActive ? (() => toggleButton()) : null)}><h4>Companies</h4></Link>                    
                         </div>                        
