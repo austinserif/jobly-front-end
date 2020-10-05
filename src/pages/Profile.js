@@ -8,9 +8,6 @@ import Field from '../components/Field';
 import JoblyApi from '../api/JoblyApi';
 
 const Profile = ({ userData, isLoading, userToken }) => {
-    console.log(userData);
-    console.log(isLoading);
-    console.log(userToken);
 
     const history = useHistory();
 
