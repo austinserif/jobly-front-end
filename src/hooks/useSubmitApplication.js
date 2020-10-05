@@ -12,7 +12,7 @@ const useSubmitApplication = (initial, jobId) => {
         console.log(response);
         setTimeout(() => {
             setState(true);
-        }, 3000);
+        }, 2000);
     }
 
     return [state, status, submitApplication];

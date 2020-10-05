@@ -39,11 +39,11 @@ const Routes = ({userToken, isLoading, userData, setUserData, toggleIsLoading}) 
             </Route>
 
             <Route exact path="/register">
-                <Registration/>
+                <Registration userToken={userToken}/>
             </Route>
             
             <Route exact path="/profile">
-                <Profile userData={userData} isLoading={isLoading}/>
+                <Profile userData={userData} isLoading={isLoading} toggleIsLoading={toggleIsLoading} userToken={userToken}/>
             </Route>
 
             <Route>

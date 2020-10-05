@@ -61,13 +61,8 @@ class JoblyApi {
     
     /** takes an variable length array of length-two arrays, each two-length array representing a completed registration field,
      * and containing [key, value], respectively.  */
-    static async register(completedFields) {
-        const fieldsObj = {};
-        for (let field of completedFields) {
-            fieldsObj[field[0]] = field[1];
-        }
-
-        let res = await JoblyApi.request(`users`, {...fieldsObj}, 'post');
+    static async register(fields) {
+        let res = await JoblyApi.request(`users`, fields, 'post');
         return res.token;
 
     }

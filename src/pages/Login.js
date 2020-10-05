@@ -46,7 +46,7 @@ const Login = ({ userToken }) => {
             await handleLogin(username, password);            
         } catch (err) {
             resetValues();
-            console.error(err);
+            console.log(err);
             setErrors(err);
         }
     }
@@ -61,11 +61,6 @@ const Login = ({ userToken }) => {
             history.push('/');
         }
     }, [userToken, history]);
-    
-    //redirect to root route if userToken present
-    // if ( userToken ) {
-    //     history.push('/');
-    // }
 
     return (
         <form className="Form" onSubmit={handleSubmit}>

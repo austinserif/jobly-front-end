@@ -1,3 +1,23 @@
 .Home {
     display: block;
 }
+
+#home-page-description {
+    display: inline-block;
+    width: 90%;
+    max-width: 800px;
+}
+
+#home-login-button {
+    padding: 10px 20px 10px 20px;
+    font-size: 20px;
+    font-weight: 600;
+    border: 3px solid black;
+    border-radius: 30px;
+    cursor: pointer;
+    background-color: white;
+}
+
+#home-login-button:hover {
+    text-decoration: underline;
+}

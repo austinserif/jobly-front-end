@@ -19,12 +19,13 @@ function App() {
 
   const [ banner, setBanner ] = useState(null);
 
-  const [ userToken, userData, isLoading, toggleIsLoading, handleLogout, handleEditProfile, handleLogin, setUserData ] = useCurrentUser();
+  //this is a mess
+  const [ userToken, userData, isLoading, toggleIsLoading, handleLogout, handleEditProfile, handleLogin, setUserData, setUserToken ] = useCurrentUser();
 
   return (
     <div className="App">
       <BrowserRouter>
-        <CurrentUserContext.Provider value={{userData, userToken, toggleIsLoading, isLoading, handleLogin, handleEditProfile, setBanner}}>
+        <CurrentUserContext.Provider value={{userData, userToken, toggleIsLoading, isLoading, handleLogin, handleEditProfile, setBanner, setUserToken}}>
           <Nav userToken={userToken} handleLogout={handleLogout}/>
           <div className="content">
             <div>

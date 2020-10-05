@@ -100,7 +100,7 @@ const useCurrentUser = () => {
         }
     }
 
-    return [ userToken, userData, isLoading, toggleIsLoading, handleLogout, handleEditProfile, handleLogin, setUserData ]
+    return [ userToken, userData, isLoading, toggleIsLoading, handleLogout, handleEditProfile, handleLogin, setUserData, setUserToken ]
 }
 
 export default useCurrentUser;

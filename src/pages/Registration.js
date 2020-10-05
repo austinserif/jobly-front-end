@@ -1,14 +1,12 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import useInputChange from '../hooks/useInputChange';
-import {v4 as uuid} from 'uuid';
 import '../styles/Form.css';
 import '../styles/Field.css';
 import useLoadRegistration from '../hooks/useLoadRegistration';
-import CurrentUserContext from '../CurrentUserContext';
 import Field from '../components/Field';
 
-const Registration = () => {
+const Registration = ({ userToken }) => {
 
     const initial = {
         username: '',
@@ -19,26 +17,22 @@ const Registration = () => {
         photo_url: ''
     }
 
-    //does this line make sense?
-    const { userToken } = useContext(CurrentUserContext);
-
+    //declare history variable
     const history = useHistory();
 
-    if ( userToken ) {
-        history.push('/');
-    }
-
+    //declare field change logic from custom hook
     const [ values, handleChange, resetValues ] = useInputChange(initial);
 
+    //declare response data and errors into state, load things
     const [ resData, errs, handleRegistration ] = useLoadRegistration();
 
-    // const allFieldsCompleted = useFormCompletion(values, required);
-
+    //if response data loads from API, redirect user to home page
     useEffect(() => {
         if (resData) {
             history.push('/');
         };
-    }, [resData, history]);
+    //eslint-disable-next-line
+    }, [resData]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -46,9 +40,17 @@ const Registration = () => {
         resetValues();
     }
 
+    //redirect user to login form
     const redirectToLogin = () => {
         history.push('/login')
     }
+
+    //if a userToken is already present, redirect user to home
+    useEffect(() => {
+        if (userToken) {
+            history.push('/');
+        }
+    }, [userToken, history]);
 
     return (
         <form className="Form" onSubmit={handleSubmit}>
@@ -59,15 +61,15 @@ const Registration = () => {
 
                 <Field required key='username' name='username' value={values.username} handleChange={handleChange} placeholder='Username'/>
                 <Field required key='password' name='password' value={values.password} handleChange={handleChange} placeholder='Password' type='password'/>
-                <Field key='first_name' name='first_name' value={values.first_name} handleChange={handleChange} placeholder='First Name'/>
-                <Field key='last_name' name='last_name' value={values.last_name} handleChange={handleChange} placeholder='Last Name'/>
-                <Field key='email' name='email' value={values.email} handleChange={handleChange} placeholder='Email'/>
-                <Field key='photo_url' name='photo_url' value={values.photo_url} handleChange={handleChange} placeholder='Photo URL' type='uri'/>
+                <Field required key='first_name' name='first_name' value={values.first_name} handleChange={handleChange} placeholder='First Name'/>
+                <Field required key='last_name' name='last_name' value={values.last_name} handleChange={handleChange} placeholder='Last Name'/>
+                <Field required name='email' value={values.email} handleChange={handleChange} placeholder='Email' type='email'/>
+                <Field required key='photo_url' name='photo_url' value={values.photo_url} handleChange={handleChange} placeholder='Photo URL' type='url'/>
                 
-                {/* <button id="sign-up-button" className="Field-button" type="submit" disabled={!allFieldsCompleted}>Sign-Up</button> */}
                 <button id="sign-up-button" className="Field-button" type="submit">Sign-Up</button>
                 <div className="Form-errors">
-                    { errs ? (errs.map(e => (<h4 key={() => uuid()} className="Form-err">{e}</h4>))) : null}
+                    {/* { errs ? (errs.map(e => (<h4 key={() => uuid()} className="Form-err">{e}</h4>))) : null} */}
+                    {errs ? (console.log(errs)) : (null)}
                 </div>
 
             </div>

@@ -1,18 +1,21 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import useInputChange from '../hooks/useInputChange';
 import '../styles/Form.css';
 import '../styles/Field.css';
 import CurrentUserContext from '../CurrentUserContext';
 import Field from '../components/Field';
-import LoadingIcon from '../components/LoadingIcon';
+import JoblyApi from '../api/JoblyApi';
 
-const Profile = ({ userData, isLoading }) => {
+const Profile = ({ userData, isLoading, userToken }) => {
+    console.log(userData);
+    console.log(isLoading);
+    console.log(userToken);
 
     const history = useHistory();
 
     // load the currentUser and callback for updating the user token from context token from context
-    const { handleEditProfile, setBanner } = useContext(CurrentUserContext);
+    const { handleEditProfile, setBanner, setUserData, toggleIsLoading } = useContext(CurrentUserContext);
 
     // load response data into the current values
     const [ values, handleChange ] = useInputChange({...userData, password: ''});
@@ -24,12 +27,19 @@ const Profile = ({ userData, isLoading }) => {
         history.push('/');
     }
 
-    if (isLoading) {
-        return ( 
-            <div>
-                <LoadingIcon/>
-            </div>)
-    }
+
+    useEffect(() => { 
+
+        const forceLoadUserData = async () => {
+            const response = await JoblyApi.getCurrentUserData();
+            setUserData(response);
+        }
+
+        if (userToken && !Object.keys(userData).length && !isLoading) {
+            forceLoadUserData();
+        }
+
+    }, [userToken, userData, isLoading, setUserData, toggleIsLoading]);
 
     return (
         <form className="Form" onSubmit={handleSubmit}>

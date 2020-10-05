@@ -43,10 +43,6 @@
     outline: black;
 }
 
-.required {
-    border: 2px dotted maroon;
-}
-
 input {
     width: 100%;
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
